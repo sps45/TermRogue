@@ -149,7 +149,6 @@ class Character:
         print(f"{self.name} attacks {target.name} for {self.attack_power} damage!")
 
         target.take_damage(self.attack_power)
-        #target.rebase_def(target)
 
 
 
