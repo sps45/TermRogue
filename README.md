@@ -1,4 +1,4 @@
-# Terminal Rogue, or TermRogue
+# Terminal Rogue
 
 Just a simple text adventure. My first ever program.
 
