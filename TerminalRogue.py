@@ -126,7 +126,7 @@ class Character:
         self.health -= reduced_damage
         print(f"{self.name} takes {reduced_damage} damage! HP remaining: {self.health}")
 
-    def defend(self, target):
+    def defend(self):
         # Boosts the defense value of target. 
         def_boost = 5
         if self.defense <= self.base_defense:
@@ -134,7 +134,7 @@ class Character:
             print(f"{self.name} feels their armor thicken. Their defense is" \
                   " raised by", def_boost)
 
-    def heal(self, target):
+    def heal(self):
         heal_amount = randrange(25, 35)
         self.health = min(100, self.health + heal_amount) 
         print(f"{self.name} heals for {heal_amount}. Their HP is now {self.health}")
