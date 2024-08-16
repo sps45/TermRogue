@@ -9,12 +9,15 @@ The code is messy because I wrote everything myself, but I did use an AI chatbot
 to help me create an early, unfinished version of the Character class - Which
 taught me a lot btw.
 
-The `heal` method and `rebase_def` method were my additions.
+The methods below were my additions:
+
+- heal
+- rebase_def (now removed) 
 
 The armor selection currently does nothing, but I eventually want 3 armor types
 with physical, magic, and hybrid defense types. The boss will then either attack
 with magic or physical damage.
 
-Yes, that is extremely unbalanced, but it's funny, and this is MY game.
+Yes, that is extremely unbalanced, but it's funny.
 
 More to come.
