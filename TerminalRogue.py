@@ -180,8 +180,6 @@ def player_turn():
 
         if turn_choice == 1:
             player.attack(enemy)
-            if (enemy.defense > enemy.base_defense):
-                player.rebase_def(enemy)
             print()
         elif turn_choice == 2:
             player.defend(player)
@@ -189,6 +187,9 @@ def player_turn():
         elif turn_choice == 3:
             player.heal(player)
             print()
+
+    if (enemy.defense > enemy.base_defense):
+                player.rebase_def(enemy)
 
 def enemy_turn():
     print("+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - +")
@@ -203,8 +204,6 @@ def enemy_turn():
 
     if enemy_turn_choice == 1:
         enemy.attack(player)
-        if (player.defense > player.base_defense):
-            enemy.rebase_def(player)
         print()
     elif enemy_turn_choice == 2:
         enemy.defend(enemy)
@@ -212,6 +211,9 @@ def enemy_turn():
     elif enemy_turn_choice == 3:
         enemy.heal(enemy)
         print()
+    
+    if (player.defense > player.base_defense):
+            enemy.rebase_def(player)
 
 turn = 0
 # Turn 0 is the player's turn. Turn 1 is the AI's turn. The loop below will iterate between 0 and 1
