@@ -1,7 +1,7 @@
 from art import *
 from random import randrange
 import time
-
+import numpy as np
 
 def spacer(count):
     for x in range(count):
@@ -126,19 +126,18 @@ class Character:
         self.health -= reduced_damage
         print(f"{self.name} takes {reduced_damage} damage! HP remaining: {self.health}")
 
-
     def defend(self, target):
         # Boosts the defense value of target. 
         def_boost = 5
-        self.defense += def_boost
-        print(f"{self.name} feels their armor thicken. Their defense is raised by", def_boost)
-
+        if self.defense <= self.base_defense:
+            self.defense += def_boost
+            print(f"{self.name} feels their armor thicken. Their defense is" \
+                  " raised by", def_boost)
 
     def rebase_def(self, target):
         # Brings the target's defense back to its base value
         self.defense = self.base_defense
         print(f"{target.name} defense has returned to normal")
-
 
     def heal(self, target):
         heal_amount = randrange(25, 35)
@@ -152,8 +151,8 @@ class Character:
 
 
 
-player = Character(name =player_name, health=50, attack_power=20, defense=5, base_defense=5)
-enemy = Character(name="Goblin", health=50, attack_power=20, defense=5, base_defense=5)
+player = Character(name =player_name, health=100, attack_power=20, defense=5, base_defense=5)
+enemy = Character(name="Goblin", health=100, attack_power=20, defense=5, base_defense=5)
 
 
 turn = 0
@@ -181,7 +180,7 @@ def player_turn():
 
         if turn_choice == 1:
             player.attack(enemy)
-            if (enemy.defense != enemy.base_defense):
+            if (enemy.defense > enemy.base_defense):
                 player.rebase_def(enemy)
             print()
         elif turn_choice == 2:
@@ -198,12 +197,13 @@ def enemy_turn():
     print()
     print()
     #time.sleep(1)
-    enemy_turn_choice = (randrange(1, 3))
-    # Enemy will randomly decide which choice to take in their response
+
+    enemy_turn_choice = np.random.choice([1, 2, 3], p=[0.7, 0.2, 0.1])
+    # Enemy will make their choice based on a percentage chance
 
     if enemy_turn_choice == 1:
         enemy.attack(player)
-        if (player.defense != player.base_defense):
+        if (player.defense > player.base_defense):
             enemy.rebase_def(player)
         print()
     elif enemy_turn_choice == 2:
