@@ -19,7 +19,7 @@ print("                              ...                                ")
 print()
 
 print()
-time.sleep(7)
+#time.sleep(7)
 
 
 print("You had no memory of how you got there, only chilling certainty")
@@ -27,7 +27,7 @@ print("that something was watching you from the shadows just beyond the")
 print("clearing.")
 print("                              ...                                ")
 spacer(3)
-time.sleep(4)
+#time.sleep(4)
 
 
 print("From the shadows, a figure emerged - an old man with wild silver")
@@ -51,7 +51,7 @@ print("what lies ahead is a battle unlike any you've known...")
 print()
 print("                              ...                                ")
 spacer(2)
-time.sleep(5)
+#time.sleep(5)
 
 
 print("The old man raises his hand, and the forest erupts with a sudden")
@@ -88,7 +88,7 @@ print("roots, its entrance dark and foreboding")
 print()
 print("                              ...                                ")
 spacer(2)
-time.sleep(8)
+#time.sleep(8)
 
 print()
 
@@ -102,7 +102,7 @@ print("twisting and writhing untl they sealed the entrance behind you, plunging 
 print("tunnel into darkness")
 print()
 
-time.sleep(5)
+#time.sleep(5)
 
 print()
 print("                              ...                                ")
@@ -141,8 +141,8 @@ class Character:
 
 
     def heal(self, target):
-        heal_amount = randrange(25, 40)
-        self.health = min(100, self.health + 50) 
+        heal_amount = randrange(25, 35)
+        self.health = min(100, self.health + heal_amount) 
         print(f"{self.name} heals for {heal_amount}. Their HP is now {self.health}")
 
     def attack(self, target):
@@ -152,8 +152,8 @@ class Character:
 
 
 
-player = Character(name ="Sean", health=100, attack_power=20, defense=5, base_defense=5)
-enemy = Character(name="Goblin", health=100, attack_power=15, defense=5, base_defense=5)
+player = Character(name =player_name, health=50, attack_power=20, defense=5, base_defense=5)
+enemy = Character(name="Goblin", health=50, attack_power=20, defense=5, base_defense=5)
 
 
 turn = 0
@@ -197,7 +197,7 @@ def enemy_turn():
     print(f"{enemy.name} readies their weapon...")
     print()
     print()
-    time.sleep(1)
+    #time.sleep(1)
     enemy_turn_choice = (randrange(1, 3))
     # Enemy will randomly decide which choice to take in their response
 
