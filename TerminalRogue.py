@@ -19,7 +19,7 @@ print("                              ...                                ")
 print()
 
 print()
-time.sleep(7)
+#time.sleep(7)
 
 
 print("You had no memory of how you got there, only chilling certainty")
@@ -27,7 +27,7 @@ print("that something was watching you from the shadows just beyond the")
 print("clearing.")
 print("                              ...                                ")
 spacer(3)
-time.sleep(4)
+#time.sleep(4)
 
 
 print("From the shadows, a figure emerged - an old man with wild silver")
@@ -51,7 +51,7 @@ print("what lies ahead is a battle unlike any you've known...")
 print()
 print("                              ...                                ")
 spacer(2)
-time.sleep(5)
+#time.sleep(5)
 
 
 print("The old man raises his hand, and the forest erupts with a sudden")
@@ -88,7 +88,7 @@ print("roots, its entrance dark and foreboding")
 print()
 print("                              ...                                ")
 spacer(2)
-time.sleep(8)
+#time.sleep(8)
 
 print()
 
@@ -102,7 +102,7 @@ print("twisting and writhing untl they sealed the entrance behind you, plunging 
 print("tunnel into darkness")
 print()
 
-time.sleep(5)
+#time.sleep(5)
 
 print()
 print("                              ...                                ")
@@ -125,7 +125,7 @@ class Character:
         # Defense reduces damage
         reduced_damage = max(0, damage - self.defense)
         self.health -= reduced_damage
-        print(f"{self.name} takes {reduced_damage} damage! HP remaining: {self.health}")
+        print(f"{self.name} takes {reduced_damage} damage! HP remaining:", max(0,self.health))
 
     def defend(self, target):
         # Boosts the defense value of target. 
@@ -178,16 +178,16 @@ def player_turn():
         if turn_choice == 1:
             player.attack(enemy)
             print()
-            time.sleep(1)
+            #time.sleep(1)
         elif turn_choice == 2:
             player.defend(player)
             print()
-            time.sleep(1)
+            #time.sleep(1)
         elif turn_choice == 3:
             if player.healthpots != 0:
                 player.heal(player)
                 print(f"{player.name} has {player.healthpots} potions remaining")
-                time.sleep(1)
+                #time.sleep(1)
             else:
                 print(f"{player.name} reaches for a healing potion, but none remain!")
                 print()
@@ -209,7 +209,7 @@ def enemy_turn():
     print("-->", enemy.name + ":", enemy.health, "HP,", enemy.defense, "DEF")
     print()
     print()
-    time.sleep(1)
+    #time.sleep(1)
 
     enemy_turn_choice = np.random.choice([1, 2, 3], p=[0.6, 0.2, 0.2])
     # Enemy will make their choice based on a percentage chance
@@ -217,15 +217,15 @@ def enemy_turn():
     if enemy_turn_choice == 1:
         enemy.attack(player)
         print()
-        time.sleep(1)
+        #time.sleep(1)
     elif enemy_turn_choice == 2:
         enemy.defend(enemy)
         print()
-        time.sleep(1)
+        #time.sleep(1)
     elif enemy_turn_choice == 3:
         enemy.heal(enemy)
         print()
-        time.sleep(1)
+        #time.sleep(1)
     
     if (player.defense > player.base_defense):
             player.defense = player.base_defense
