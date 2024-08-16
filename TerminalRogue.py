@@ -113,12 +113,13 @@ print("confronts you with its weapon drawn!")
 print()
 
 class Character:
-    def __init__(self, name, health, attack_power, defense, base_defense):
+    def __init__(self, name, health, attack_power, defense, base_defense, healthpots):
         self.name = name
         self.health = health
         self.attack_power = attack_power
         self.defense = defense
         self.base_defense = base_defense # Defense level before any buffs of debuffs
+        self.healthpots = healthpots
 
     def take_damage(self, damage):
         # Defense reduces damage
@@ -136,8 +137,10 @@ class Character:
 
     def heal(self, target):
         heal_amount = randrange(25, 35)
-        self.health = min(100, self.health + heal_amount) 
+        self.health = min(100, self.health + heal_amount)
+        self.healthpots -= 1 
         print(f"{self.name} heals for {heal_amount}. Their HP is now {self.health}")
+        print()
 
     def attack(self, target):
         print(f"{self.name} attacks {target.name} for {self.attack_power} damage!")
@@ -146,8 +149,8 @@ class Character:
 
 
 
-player = Character(name =player_name, health=100, attack_power=20, defense=5, base_defense=5)
-enemy = Character(name="Goblin", health=100, attack_power=20, defense=5, base_defense=5)
+player = Character(name =player_name, health=100, attack_power=np.random.choice([25, 20, 0], p=[0.1, 0.8, 0.1]), defense=5, base_defense=5, healthpots=2)
+enemy = Character(name="Goblin", health=100, attack_power=np.random.choice([25, 20, 0], p=[0.1, 0.7, 0.2]), defense=5, base_defense=5, healthpots=2)
 
 
 turn = 0
@@ -162,7 +165,7 @@ def player_turn():
     print()
     print("[1] Attack")
     print("[2] Defend")
-    print("[3] Potion")
+    print(f"[3] Healing Potion ({player.healthpots} remaining)")
     print()
 
     turn_choice = input("> ")
@@ -172,7 +175,6 @@ def player_turn():
     if turn_choice.isdigit() and 0 < int(turn_choice) < 4:
     # Check if turn_choice is a digit before converting it to integer
         turn_choice = int(turn_choice)
-
         if turn_choice == 1:
             player.attack(enemy)
             print()
@@ -182,9 +184,14 @@ def player_turn():
             print()
             #time.sleep(1)
         elif turn_choice == 3:
-            player.heal(player)
-            print()
-            #time.sleep(1)
+            if player.healthpots != 0:
+                player.heal(player)
+                print(f"{player.name} has {player.healthpots} potions remaining")
+                #time.sleep(1)
+            else:
+                print(f"{player.name} reaches for a healing potion, but none remain!")
+                print()
+                    
 
     if (enemy.defense > enemy.base_defense):
                 enemy.defense = enemy.base_defense
@@ -204,7 +211,7 @@ def enemy_turn():
     print()
     #time.sleep(1)
 
-    enemy_turn_choice = np.random.choice([1, 2, 3], p=[0.7, 0.2, 0.1])
+    enemy_turn_choice = np.random.choice([1, 2, 3], p=[0.6, 0.2, 0.2])
     # Enemy will make their choice based on a percentage chance
 
     if enemy_turn_choice == 1:
