@@ -126,7 +126,7 @@ class Character:
         self.health -= reduced_damage
         print(f"{self.name} takes {reduced_damage} damage! HP remaining: {self.health}")
 
-    def defend(self):
+    def defend(self, target):
         # Boosts the defense value of target. 
         def_boost = 5
         if self.defense <= self.base_defense:
@@ -134,7 +134,7 @@ class Character:
             print(f"{self.name} feels their armor thicken. Their defense is" \
                   " raised by", def_boost)
 
-    def heal(self):
+    def heal(self, target):
         heal_amount = randrange(25, 35)
         self.health = min(100, self.health + heal_amount) 
         print(f"{self.name} heals for {heal_amount}. Their HP is now {self.health}")
@@ -176,15 +176,15 @@ def player_turn():
         if turn_choice == 1:
             player.attack(enemy)
             print()
-            time.sleep(1)
+            #time.sleep(1)
         elif turn_choice == 2:
             player.defend(player)
             print()
-            time.sleep(1)
+            #time.sleep(1)
         elif turn_choice == 3:
             player.heal(player)
             print()
-            time.sleep(1)
+            #time.sleep(1)
 
     if (enemy.defense > enemy.base_defense):
                 enemy.defense = enemy.base_defense
@@ -210,15 +210,15 @@ def enemy_turn():
     if enemy_turn_choice == 1:
         enemy.attack(player)
         print()
-        time.sleep(1)
+        #time.sleep(1)
     elif enemy_turn_choice == 2:
         enemy.defend(enemy)
         print()
-        time.sleep(1)
+        #time.sleep(1)
     elif enemy_turn_choice == 3:
         enemy.heal(enemy)
         print()
-        time.sleep(1)
+        #time.sleep(1)
     
     if (player.defense > player.base_defense):
             player.defense = player.base_defense
