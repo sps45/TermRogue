@@ -108,8 +108,8 @@ print()
 print("                              ...                                ")
 
 spacer(2)
-print("As you attempt to get a grasp on your surroundings, a 2-headed Goblin confronts")
-print("you with its weapon drawn!")
+print("As you attempt to get a grasp on your surroundings, a 2-headed Goblin")
+print("confronts you with its weapon drawn!")
 print()
 
 class Character:
@@ -133,11 +133,6 @@ class Character:
             self.defense += def_boost
             print(f"{self.name} feels their armor thicken. Their defense is" \
                   " raised by", def_boost)
-
-    def rebase_def(self, target):
-        # Brings the target's defense back to its base value
-        self.defense = self.base_defense
-        print(f"{target.name} defense has returned to normal")
 
     def heal(self, target):
         heal_amount = randrange(25, 35)
@@ -181,20 +176,30 @@ def player_turn():
         if turn_choice == 1:
             player.attack(enemy)
             print()
+            time.sleep(1)
         elif turn_choice == 2:
             player.defend(player)
             print()
+            time.sleep(1)
         elif turn_choice == 3:
             player.heal(player)
             print()
+            time.sleep(1)
 
     if (enemy.defense > enemy.base_defense):
-                player.rebase_def(enemy)
+                enemy.defense = enemy.base_defense
+                print(f"{enemy.name}'s defense has returned to normal")
+                print()
 
 def enemy_turn():
     print("+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - +")
     print()
     print(f"{enemy.name} readies their weapon...")
+    print()
+    print()
+    print("-->", player.name + ":", player.health, "HP,", player.defense, "DEF")
+    print()
+    print("-->", enemy.name + ":", enemy.health, "HP,", enemy.defense, "DEF")
     print()
     print()
     #time.sleep(1)
@@ -205,15 +210,20 @@ def enemy_turn():
     if enemy_turn_choice == 1:
         enemy.attack(player)
         print()
+        time.sleep(1)
     elif enemy_turn_choice == 2:
         enemy.defend(enemy)
         print()
+        time.sleep(1)
     elif enemy_turn_choice == 3:
         enemy.heal(enemy)
         print()
+        time.sleep(1)
     
     if (player.defense > player.base_defense):
-            enemy.rebase_def(player)
+            player.defense = player.base_defense
+            print(f"{player.name}'s defense has returned to normal")
+            print()
 
 turn = 0
 # Turn 0 is the player's turn. Turn 1 is the AI's turn. The loop below will iterate between 0 and 1
