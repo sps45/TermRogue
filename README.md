@@ -1,6 +1,6 @@
 # Terminal Rogue
 
-Just a simple text adventure. My first ever program.
+Just a simple text adventure.
 
 The title in-game is shortened to 'TermRogue' to match [PEP-8
 recommendations](https://peps.python.org/pep-0008/)
